@@ -30,7 +30,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 	else
 	{
-		echo '<h3 style="display:inline-block;">$</h3><input type="text" style="border: 2px solid red;padding:12px 20px" value="'.$bill_entry.'" name="bill_entry" id="bill_entry">';	
+		if(!is_numeric($bill_entry) || $bill_entry <= 0)
+		{
+			echo '<h3 style="display:inline-block;">$</h3><input type="text" style="border: 2px solid red;padding:12px 20px" value="'.$bill_entry.'" name="bill_entry" id="bill_entry">';	
+		}
+		else
+		{
+			echo '<h3 style="display:inline-block;">$</h3><input type="text" style="border: 2px solid blue;padding:12px 20px" value="'.$bill_entry.'" name="bill_entry" id="bill_entry">';
+		}
+		if($trip_percentage == "")
+		{
+			echo '<h3> Tip was not selected</h3>';
+
+		}
 	}
 
 	echo '<h1> Tip percentage: </h1>';
